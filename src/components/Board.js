@@ -73,18 +73,20 @@ class Board extends React.Component {
             });
         }
 
-        if (optimalStep !== null) {
+        if (optimalStep != null) {
             return optimalStep;
         }
 
         //Search lose step for player
         optimalStep = this.indexSelection(2, squares);
+
         if (optimalStep != null) {
             return optimalStep;
         }
 
         //search 1 selected step
         optimalStep = this.indexSelection(1, squares);
+        // console.log(optimalStep);
         if (optimalStep != null) {
             return optimalStep;
         }
@@ -117,10 +119,12 @@ class Board extends React.Component {
             });
 
             if (count >= strategyCount) {
+
                 optimalStep = freeIndex;
-                return;
+                return false;
             }
         });
+
         return optimalStep;
     }
 
